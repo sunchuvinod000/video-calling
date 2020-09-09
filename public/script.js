@@ -28,7 +28,7 @@ navigator.mediaDevices.getUserMedia({
            
        })
    })
-   socket.on('user-connected', userId =>{
+   socket.on('user-connected', userId =>{ 
    connectToNewUser(userId,stream);
 })
  
@@ -39,11 +39,14 @@ $('html').keydown((e) =>{
     if(e.which==13 && text.val().length !==0){
      
         socket.emit('message', text.val())
+      
         text.val('')
     }
 })
 socket.on('createMessage',message =>{
-    $('ul').append(`<li class="message"><b>User</b><br>${message}</li>`)
+    alert(message)
+    $('.messages').append(`<li class="message"><b>User</b><br>${message}</li>`)
+
     scrollBottom()
 })
 
@@ -105,7 +108,7 @@ const setMuteButton = () =>{
 };
 const setUnmuteButton = () =>{
     const html = `
-    <i class="fa fa-microphone-slash" aria-hidden="true"></i>
-    <span>Mute</span>`
+    <i class="fa fa-microphone-slash unmute" aria-hidden="true"></i>
+    <span>UnMute</span>`
     document.querySelector('.main_mute_button').innerHTML = html
 }
