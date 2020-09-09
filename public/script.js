@@ -3,12 +3,12 @@ const videoGrid = document.getElementById('video-grid');
 
 var peer = new Peer(undefined, {
     path: '/peerjs',
-    host: '/localhost',
-    port: '5000'
+    host: '/',
+    port: '443'
 });
 
 const myVideo = document.createElement('video');
-
+myVideo.muted = true;
 let myVideoStream;
 navigator.mediaDevices.getUserMedia({
     video: true,
@@ -96,17 +96,16 @@ const muteUnmute = () =>{
     }
    
 }
-const setMuteButton = () => {
+const setMuteButton = () =>{
     const html =`
     <i class="fa fa-microphone" aria-hidden="true"></i>
     <span>Mute</span>
     `
-    document.querySelector('.main_mute_button').innerHTML=html;
-}
+    document.querySelector('.main_mute_button').innerHTML = html
+};
 const setUnmuteButton = () =>{
     const html = `
-    <i class="unmute fa fa-microphone-slash" aria-hidden="true"></i>
-    <span>UnMute</span>`
-    document.querySelector('.main_mute_button').innerHTML=html;
-
+    <i class="fa fa-microphone-slash" aria-hidden="true"></i>
+    <span>Mute</span>`
+    document.querySelector('.main_mute_button').innerHTML = html
 }
